@@ -6,7 +6,6 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Scroll effect to add background when scrolled
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -16,9 +15,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // UPDATED CLICK HANDLER
   const handleMenuItemClick = (sectionId) => {
     setActiveSection(sectionId);
     setOpen(false); // close mobile menu if open
+
+    // Find the element with the corresponding ID
+    const section = document.getElementById(sectionId);
+    
+    // If the element exists, scroll to it smoothly
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const menuItems = [
@@ -29,7 +37,6 @@ const Navbar = () => {
     { id: "education", label: "Education" },
   ];
 
-  // Show background if scrolled OR mobile menu is open
   const showBackground = isScrolled || isOpen;
 
   return (
