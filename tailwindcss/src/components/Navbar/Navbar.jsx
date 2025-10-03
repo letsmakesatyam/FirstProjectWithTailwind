@@ -29,20 +29,23 @@ const Navbar = () => {
     { id: "education", label: "Education" },
   ];
 
+  // Show background if scrolled OR mobile menu is open
+  const showBackground = isScrolled || isOpen;
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
-        isScrolled ? "bg-[#050414] bg-opacity-70 backdrop-blur-md" : "bg-transparent"
+        showBackground ? "bg-[#050414] bg-opacity-70 backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="text-white py-5 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-lg font-semibold cursor-pointer font-mono">
-          <span className="text-[#8245ec]">&lt;</span>
-          <span className="text-white">Satyam</span>
-          <span className="text-[#8245ec]">/</span>
-          <span className="text-white">Revgade</span>
-          <span className="text-[#8245ec]">&gt;</span>
+        {/* Animated Logo */}
+        <div className="text-lg font-semibold cursor-pointer font-mono group">
+          <span className="text-[#8245ec] group-hover:scale-110 transition-transform duration-300">&lt;</span>
+          <span className="text-white group-hover:text-[#8245ec] transition-all duration-300 group-hover:scale-105">Satyam</span>
+          <span className="text-[#8245ec] group-hover:scale-110 transition-transform duration-300">/</span>
+          <span className="text-white group-hover:text-[#8245ec] transition-all duration-300 group-hover:scale-105">Revgade</span>
+          <span className="text-[#8245ec] group-hover:scale-110 transition-transform duration-300">&gt;</span>
         </div>
 
         {/* Desktop Menu + Social Icons */}
@@ -87,7 +90,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={() => setOpen(!isOpen)}
-            className="text-white focus:outline-none"
+            className="text-white focus:outline-none text-xl"
           >
             {isOpen ? "✖" : "☰"}
           </button>
@@ -100,11 +103,14 @@ const Navbar = () => {
           {menuItems.map((item) => (
             <li
               key={item.id}
-              className={`cursor-pointer hover:text-[#8245ec] ${
+              className={`cursor-pointer hover:text-[#8245ec] list-none ${
                 activeSection === item.id ? "text-[#8245ec]" : ""
               }`}
             >
-              <button onClick={() => handleMenuItemClick(item.id)}>
+              <button 
+                onClick={() => handleMenuItemClick(item.id)}
+                className="w-full text-left py-2"
+              >
                 {item.label}
               </button>
             </li>

@@ -34,3 +34,34 @@
         .animate-blink {
   animation: blink 1s step-start infinite;
 }
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-typewriter {
+  overflow: hidden;
+  border-right: 2px solid #8245ec;
+  white-space: nowrap;
+  animation: typewriter 2s steps(20) 1s 1 normal both;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}

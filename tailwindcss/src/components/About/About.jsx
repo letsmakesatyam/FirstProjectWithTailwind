@@ -101,7 +101,7 @@ const About = () => {
 
         {/* Buttons */}
         <div className="flex space-x-4 mt-4 md:mt-6">
-          <button className="bg-[#8245ec] text-white px-6 py-3 rounded-lg hover:bg-[#ff5c8a] transition duration-300 transform hover:scale-105">
+          <button className="bg-[#8245ec] text-white px-6 py-3 rounded-lg hover:bg-[#9d5cf5] transition duration-300 transform hover:scale-105">
             Hire Me
           </button>
           <button className="bg-transparent border-2 border-[#8245ec] text-white px-6 py-3 rounded-lg hover:bg-[#8245ec] hover:text-white transition duration-300 transform hover:scale-105">
