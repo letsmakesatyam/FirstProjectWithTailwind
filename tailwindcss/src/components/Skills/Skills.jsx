@@ -1,26 +1,47 @@
 import React from 'react';
-import Tilt from 'react-parallax-tilt'; // Import the new package
-import { SkillsInfo } from '../../constants'; // Make sure this path is correct
+import Tilt from 'react-parallax-tilt';
+import { motion } from 'framer-motion';
+import { SkillsInfo } from '../../constants'; // Assuming this file exists
 
-// The AnimatedBackground component remains unchanged
-const AnimatedBackground = () => {
-  const stars = Array.from({ length: 50 });
+// AsteroidBackground component
+const AsteroidBackground = () => {
+  const numAsteroids = 30; // Number of asteroids
+
+  const asteroids = Array.from({ length: numAsteroids }, (_, i) => {
+    const size = Math.random() * 5 + 2; // Asteroid size between 2px and 7px
+    const startX = Math.random() * 100; // Starting x-position (0-100%)
+    const delay = Math.random() * 5;    // Random animation delay
+
+    return (
+      <motion.div
+        key={i}
+        className="absolute bg-slate-500 rounded-full"
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+          top: `-${size}px`, // Start just above the viewport
+          left: `${startX}%`,
+          boxShadow: `0 0 ${size * 1.5}px ${size * 0.5}px #fff`,
+        }}
+        initial={{ y: 0, opacity: 0.8 }}
+        animate={{
+          y: '120vh', // Animate down the screen
+          opacity: 0,
+        }}
+        transition={{
+          duration: Math.random() * 5 + 5, // Duration between 5s and 10s
+          delay: delay,
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "linear", // Consistent, straight movement
+        }}
+      />
+    );
+  });
+
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
-      {stars.map((_, index) => (
-        <div
-          key={index}
-          className="absolute bg-slate-600 rounded-full animate-float"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            width: `${Math.random() * 2 + 1}px`,
-            height: `${Math.random() * 2 + 1}px`,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${Math.random() * 5 + 4}s`,
-          }}
-        />
-      ))}
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+      {asteroids}
     </div>
   );
 };
@@ -38,7 +59,7 @@ const Skills = () => {
 
   return (
     <section id="skills" className="relative bg-black text-white py-16 md:py-24">
-      <AnimatedBackground />
+      <AsteroidBackground /> {/* Use the new AsteroidBackground component */}
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
