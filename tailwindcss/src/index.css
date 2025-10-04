@@ -1,104 +1,114 @@
 @import "tailwindcss";
-  @keyframes blob {
-    0%   { transform: translate(0px, 0px) scale(1); }
-    33%  { transform: translate(80px, -100px) scale(1.2); }
-    66%  { transform: translate(-60px, 80px) scale(0.9); }
+
+
+
+
+/* Moving blob shapes */
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(80px, -100px) scale(1.2); }
+    66% { transform: translate(-60px, 80px) scale(0.9); }
     100% { transform: translate(0px, 0px) scale(1); }
-  }
-  .animate-blob {
+}
+
+.animate-blob {
     animation: blob 18s infinite;
-  }
-  .animation-delay-2000 {
+}
+
+.animation-delay-2000 {
     animation-delay: 2s;
-  }
-  .animation-delay-4000 {
+}
+
+.animation-delay-4000 {
     animation-delay: 4s;
-  }
+}
 
-  /* Moving Grid Lines */
-  @keyframes move {
+/* Moving grid lines */
+@keyframes move {
     from { background-position: 0 0, 0 0; }
-    to   { background-position: 80px 80px, 80px 80px; }
-  }
-  .animate-move {
+    to { background-position: 80px 80px, 80px 80px; }
+}
+
+.animate-move {
     animation: move 2s linear infinite;
-  }
-  
-          .blinking-cursor {
-            animation: blink 1s step-start infinite;
-          }
-          @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
-          }
-        .animate-blink {
-  animation: blink 1s step-start infinite;
 }
+
+/* Blinking cursor effect */
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+.blinking-cursor,
+.animate-blink {
+    animation: blink 1s step-start infinite;
+}
+
+/* Typewriter text reveal */
 @keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+    from { width: 0; }
+    to { width: 100%; }
 }
 
 .animate-typewriter {
-  overflow: hidden;
-  border-right: 2px solid #8245ec;
-  white-space: nowrap;
-  animation: typewriter 2s steps(20) 1s 1 normal both;
+    overflow: hidden;
+    border-right: 2px solid #8245ec;
+    white-space: nowrap;
+    animation: typewriter 2s steps(20) 1s 1 normal both;
 }
 
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
+/* Floating element */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
 }
- @keyframes gradient-shift {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
-                .animate-gradient {
-                    background-size: 400% 400%;
-                    animation: gradient-shift 15s ease infinite;
-                }
-                /* Custom Keyframes for slow, dramatic ping/pulse effect on timeline dot */
-                @keyframes slow-ping {
-                    0% {
-                        transform: scale(0.8);
-                        opacity: 0.6;
-                    }
-                    50% {
-                        transform: scale(1.1);
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: scale(0.8);
-                        opacity: 0.6;
-                    }
-                }
-                .animate-slow-ping {
-                    animation: slow-ping 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-                }
-                /* CSS 3D Tilt Effect replacement */
-                .card-3d-hover {
-                    transform-style: preserve-3d;
-                    perspective: 1000px; /* Define perspective for 3D view */
-                    will-change: transform, box-shadow; /* Optimize performance */
-                }
-                .card-3d-hover:hover {
-                    transform: rotateX(1deg) rotateY(-1deg) scale(1.02); /* Subtle 3D rotation and scale up */
-                    box-shadow: 0 25px 50px -12px rgba(6, 182, 212, 0.5); /* Stronger glow on hover */
-                }
+
+/* Gradient background shift */
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-gradient,
+.animate-gradient-x {
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+/* Slow ping/pulse effect */
+@keyframes slow-ping {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+}
+
+.animate-slow-ping {
+    animation: slow-ping 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 3D Tilt Effect on hover */
+.card-3d-hover {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform, box-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-3d-hover:hover {
+    transform: rotateX(1deg) rotateY(-1deg) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(6, 182, 212, 0.5);
+}
