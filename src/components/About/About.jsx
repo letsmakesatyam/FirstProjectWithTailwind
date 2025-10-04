@@ -60,7 +60,7 @@ const About = () => {
           Hey, I am
         </h2>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#8245ec] flex flex-col md:flex-row md:space-x-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white flex flex-col md:flex-row md:space-x-4">
           <span>Satyam</span>
           <span>Revgade</span>
         </h1>
